@@ -6,6 +6,23 @@
   <title>Ayla Transport | النقل والتوصيل</title>
   <meta name="description" content="Ayla Transport - خدمات الرحلات والتوصيل بالدراجات وتوصيل الطرود داخل العين الصفراء.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .booking{background:#f7f8fb;padding:70px 0}
+    .booking-box{max-width:760px;margin:auto;background:#fff;border-radius:24px;padding:28px;box-shadow:0 10px 35px #00000012}
+    .booking-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+    .booking-form .full{grid-column:1/-1}
+    .booking-form label{font-weight:700;display:block;margin-bottom:6px}
+    .booking-form input,.booking-form select{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;font-size:16px;box-sizing:border-box}
+    .booking-form button{grid-column:1/-1;border:0;border-radius:14px;padding:15px;font-size:17px;font-weight:800;cursor:pointer;background:#5b2bd8;color:#fff}
+    .booking-note{font-size:13px;color:#777;margin-top:10px}
+    .service-action{margin-top:14px;display:inline-block}
+    .mini-card{cursor:pointer}
+    @media(max-width:650px){
+      .booking-form{grid-template-columns:1fr}
+      .booking-form .full{grid-column:auto}
+      .booking-form button{grid-column:auto}
+    }
+  </style>
 </head>
 <body>
 <header class="header">
@@ -29,17 +46,18 @@
         <h1 data-ar="تنقّل وتوصّل<br><strong>بسهولة مع Ayla</strong>" data-fr="Déplacez-vous et livrez<br><strong>avec Ayla</strong>">تنقّل وتوصّل<br><strong>بسهولة مع Ayla</strong></h1>
         <p data-ar="خدمات رحلات وتوصيل سريعة وموثوقة داخل العين الصفراء." data-fr="Des services de transport et de livraison rapides et fiables à Aïn Sefra.">خدمات رحلات وتوصيل سريعة وموثوقة داخل العين الصفراء.</p>
         <div class="actions">
-          <a class="btn primary" href="#services" data-ar="اكتشف خدماتنا" data-fr="Découvrir nos services">اكتشف خدماتنا</a>
+          <a class="btn primary" href="#booking" data-ar="🚕 اطلب رحلة" data-fr="🚕 Commander une course">🚕 اطلب رحلة</a>
           <a class="btn secondary" href="#drivers" data-ar="أصبح سائقًا" data-fr="Devenir conducteur">أصبح سائقًا</a>
         </div>
         <div class="trust"><span>✓</span> <span data-ar="السعر واضح قبل القبول" data-fr="Prix visible avant acceptation">السعر واضح قبل القبول</span></div>
       </div>
+
       <div class="phone-wrap">
         <div class="glow"></div>
         <div class="phone">
           <div class="phone-top">AYLA</div>
           <div class="welcome" data-ar="مرحباً بك 👋" data-fr="Bienvenue 👋">مرحباً بك 👋</div>
-          <div class="mini-card yellow">🚕 <span data-ar="رحلة" data-fr="Course">رحلة</span></div>
+          <a href="#booking" class="mini-card yellow">🚕 <span data-ar="رحلة" data-fr="Course">رحلة</span></a>
           <div class="mini-card green">🏍️ <span data-ar="توصيل بالدراجات" data-fr="Livraison à moto">توصيل بالدراجات</span></div>
           <div class="mini-card blue">📦 <span data-ar="توصيل الطرود" data-fr="Livraison de colis">توصيل الطرود</span></div>
         </div>
@@ -58,6 +76,7 @@
           <div class="icon yellow">🚕</div>
           <h3 data-ar="الرحلات" data-fr="Courses">الرحلات</h3>
           <p data-ar="اطلب رحلة داخل المدينة بسرعة وأمان." data-fr="Demandez une course rapidement et en toute sécurité.">اطلب رحلة داخل المدينة بسرعة وأمان.</p>
+          <a class="btn primary service-action" href="#booking" data-ar="اطلب رحلة" data-fr="Commander">اطلب رحلة</a>
         </article>
         <article class="card">
           <div class="icon green">🏍️</div>
@@ -69,6 +88,50 @@
           <h3 data-ar="توصيل الطرود" data-fr="Livraison de colis">توصيل الطرود</h3>
           <p data-ar="أرسل طرودك ورسائلك بسهولة إلى وجهتها." data-fr="Envoyez vos colis facilement à leur destination.">أرسل طرودك ورسائلك بسهولة إلى وجهتها.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="booking">
+    <div class="container">
+      <div class="booking-box">
+        <div class="section-title">
+          <span data-ar="حجز رحلة" data-fr="Réserver une course">حجز رحلة</span>
+          <h2 data-ar="اطلب رحلتك الآن 🚕" data-fr="Commandez votre course 🚕">اطلب رحلتك الآن 🚕</h2>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+          <div>
+            <label for="name" data-ar="الاسم" data-fr="Nom">الاسم</label>
+            <input id="name" required placeholder="اكتب اسمك">
+          </div>
+          <div>
+            <label for="phone" data-ar="رقم الهاتف" data-fr="Téléphone">رقم الهاتف</label>
+            <input id="phone" type="tel" required placeholder="06xxxxxxxx">
+          </div>
+          <div>
+            <label for="pickup" data-ar="مكان الانطلاق" data-fr="Point de départ">مكان الانطلاق</label>
+            <input id="pickup" required placeholder="مثال: حي النصر">
+          </div>
+          <div>
+            <label for="destination" data-ar="الوجهة" data-fr="Destination">الوجهة</label>
+            <input id="destination" required placeholder="مثال: وسط المدينة">
+          </div>
+          <div>
+            <label for="date" data-ar="التاريخ" data-fr="Date">التاريخ</label>
+            <input id="date" type="date" required>
+          </div>
+          <div>
+            <label for="time" data-ar="الوقت" data-fr="Heure">الوقت</label>
+            <input id="time" type="time" required>
+          </div>
+          <div class="full">
+            <label for="notes" data-ar="ملاحظات (اختياري)" data-fr="Notes (facultatif)">ملاحظات (اختياري)</label>
+            <input id="notes" placeholder="أي معلومات إضافية">
+          </div>
+          <button type="submit" data-ar="إرسال طلب الرحلة عبر واتساب 📱" data-fr="Envoyer la demande via WhatsApp 📱">إرسال طلب الرحلة عبر واتساب 📱</button>
+        </form>
+        <div class="booking-note" data-ar="سيتم تجهيز الطلب وإرساله عبر واتساب للتواصل مع Ayla Transport." data-fr="La demande sera préparée et envoyée via WhatsApp pour contacter Ayla Transport.">سيتم تجهيز الطلب وإرساله عبر واتساب للتواصل مع Ayla Transport.</div>
       </div>
     </div>
   </section>
@@ -128,5 +191,30 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const pickup = document.getElementById('pickup').value.trim();
+  const destination = document.getElementById('destination').value.trim();
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const notes = document.getElementById('notes').value.trim();
+
+  const message =
+`🚕 طلب رحلة - Ayla Transport
+الاسم: ${name}
+الهاتف: ${phone}
+من: ${pickup}
+إلى: ${destination}
+التاريخ: ${date}
+الوقت: ${time}
+ملاحظات: ${notes || 'لا توجد'}`;
+
+  const whatsappNumber = '213675002757';
+  window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank');
+});
+</script>
 </body>
 </html>
